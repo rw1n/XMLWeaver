@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<DialogPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.id.XMLWeaver.controller.DirectoryDialogController">
+
+    <content>
+        <GridPane hgap="10" vgap="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="BaseLine Alt:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="baseLineOldField" editable="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Button text="..." onAction="#onChooseBaseLineOld" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+
+            <Label text="BaseLine Neu:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="baseLineNewField" editable="false" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Button text="..." onAction="#onChooseBaseLineNew" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+
+            <Label text="Kundenmodell:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="customerField" editable="false" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Button text="..." onAction="#onChooseCustomer" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+        </GridPane>
+    </content>
+
+    <buttonTypes>
+        <ButtonType text="OK" buttonData="OK_DONE"/>
+        <ButtonType text="Abbrechen" buttonData="CANCEL_CLOSE"/>
+    </buttonTypes>
+</DialogPane>

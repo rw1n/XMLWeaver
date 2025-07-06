@@ -6,9 +6,82 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.id.XMLWeaver.controller.MainViewController"
-            prefHeight="400.0" prefWidth="600.0">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.id.XMLWeaver.controller.MainViewController">
 
-</AnchorPane>
+    <!-- Toolbar oben -->
+    <top>
+        <ToolBar>
+            <Pane HBox.hgrow="ALWAYS" />
+            <Button fx:id="btnOpenDialog" onAction="#onOpenDirectoryDialog" graphicTextGap="5">
+                <graphic>
+                    <ImageView fitHeight="16" fitWidth="16">
+                        <image>
+                            <Image url="@/icons/folder.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+                <tooltip>
+                    <Tooltip text="Verzeichnisse wählen" />
+                </tooltip>
+            </Button>
+
+            <Button fx:id="btnStartMerge" graphicTextGap="5">
+                <graphic>
+                    <ImageView fitHeight="16" fitWidth="16">
+                        <image>
+                            <Image url="@/icons/refresh-ccw.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+                <tooltip>
+                    <Tooltip text="Merge" />
+                </tooltip>
+            </Button>
+
+            <Button fx:id="btnSettings" graphicTextGap="5">
+                <graphic>
+                    <ImageView fitHeight="16" fitWidth="16">
+                        <image>
+                            <Image url="@/icons/settings.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+                <tooltip>
+                    <Tooltip text="Einstellungen" />
+                </tooltip>
+            </Button>
+            <Pane HBox.hgrow="ALWAYS" />
+        </ToolBar>
+    </top>
+
+    <!-- Mitte: Split zwischen TreeView und Editor/Log -->
+    <center>
+        <SplitPane dividerPositions="0.3">
+            <!-- TreeView -->
+            <VBox>
+                <Label text="Dateien" />
+                <TreeView fx:id="fileTreeView" />
+            </VBox>
+
+            <!-- Code-Ansicht + Log -->
+            <VBox spacing="5">
+                <Label fx:id="selectedFileLabel" text="Keine Datei ausgewählt" />
+                <TextArea fx:id="codeView" prefHeight="400" wrapText="false" editable="false" />
+                <TitledPane text="Log" expanded="true">
+                    <TextArea fx:id="logArea" prefRowCount="10" editable="false" wrapText="true" />
+                </TitledPane>
+            </VBox>
+        </SplitPane>
+    </center>
+
+    <!-- Statusleiste -->
+    <bottom>
+        <HBox spacing="10" style="-fx-padding: 5;">
+            <Label text="Status:" />
+            <Label fx:id="statusLabel" text="Nicht bereit" />
+        </HBox>
+    </bottom>
+
+</BorderPane>
